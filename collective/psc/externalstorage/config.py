@@ -8,5 +8,5 @@ from OFS.SimpleItem import SimpleItem
 class ESConfiguration(SimpleItem):
     implements(IESConfiguration)
     
-    path = FieldProperty(IESConfiguration['path'])
+    path = FieldProperty(IESConfiguration['path']) 
 
