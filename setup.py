@@ -24,6 +24,7 @@ setup(name='collective.psc.externalstorage',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Products.ExternalStorage'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
