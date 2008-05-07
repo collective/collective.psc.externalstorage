@@ -1,0 +1,16 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           i18n_domain="plonesoftwarecenter">
+
+   <five:registerPackage package="." />
+   
+   <adapter
+      name="externalstorage"
+      for="*"
+      factory=".ExternalStorage"
+      provides="Products.PloneSoftwareCenter.storage.interfaces.IPSCFileStorage"
+      />
+ 
+
+</configure>
