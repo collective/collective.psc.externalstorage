@@ -5,7 +5,7 @@ from Products.Archetypes.atapi import AttributeStorage
 from Products.PloneSoftwareCenter.storage.interfaces import IPSCFileStorage
 from Products.ExternalStorage.ExternalStorage import ExternalStorage as _E
 
-STORAGE_PATH = '/tmp/ext'
+from collective.psc.externalstorage.browser.config import grab_utility
 
 class ExternalStorage(_E):
     """adapts a release folder as a dummy storage
@@ -14,10 +14,10 @@ class ExternalStorage(_E):
     implements(IPSCFileStorage)
 
     def __init__(self, context):
+        _E.__init__(self, archive=False, rename=False)
+        storage = grab_utility(context)
+        self.prefix = storage.path
         self.context = context
-        _E.__init__(self, archive=False, rename=False,
-                    prefix=STORAGE_PATH)
-        self.initializeStorage(context)
 
     def getName(self):
         return self.name

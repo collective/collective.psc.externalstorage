@@ -6,7 +6,8 @@ version = '0.1.0'
 setup(name='collective.psc.externalstorage',
       version=version,
       description="External storage for PloneSoftwareCenter",
-      long_description=open("README.txt").read(),
+      long_description=open("README.txt").read() + '\n' +
+                       open("HISTORY.txt").read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
