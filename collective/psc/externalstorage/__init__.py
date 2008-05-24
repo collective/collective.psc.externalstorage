@@ -1,7 +1,5 @@
 from zope.interface import implements
 
-from Products.Archetypes.atapi import AttributeStorage
-
 from Products.PloneSoftwareCenter.storage.interfaces import IPSCFileStorage
 from Products.ExternalStorage.ExternalStorage import ExternalStorage as _E
 
@@ -10,7 +8,9 @@ from collective.psc.externalstorage.browser.config import grab_utility
 class ExternalStorage(_E):
     """adapts a release folder as a dummy storage
     """
-    name = 'externalstorage'
+    title = u"ExternalStorage"
+    description = u"store releases using ExternalStorage"
+    
     implements(IPSCFileStorage)
 
     def __init__(self, context):
@@ -18,9 +18,6 @@ class ExternalStorage(_E):
         storage = grab_utility(context)
         self.prefix = storage.path
         self.context = context
-
-    def getName(self):
-        return self.name
 
     def _checkStorage(self, instance):
         if not self.isInitialized(instance):
