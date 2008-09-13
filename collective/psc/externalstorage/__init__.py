@@ -16,8 +16,9 @@ class ExternalStorage(_E):
     def __init__(self, context):
         _E.__init__(self, archive=False, rename=False)
         storage = grab_utility(context)
-        self.prefix = storage.path
-        self.context = context
+        if storage is not None:
+            self.prefix = storage.path
+            self.context = context
 
     def _checkStorage(self, instance):
         if not self.isInitialized(instance):

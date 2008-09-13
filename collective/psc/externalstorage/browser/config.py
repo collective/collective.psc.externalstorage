@@ -1,5 +1,6 @@
 from zope.formlib import form
 from zope.component import getUtility
+from zope.component import ComponentLookupError
 from zope.i18nmessageid import MessageFactory
 from Products.Five.formlib import formbase
 
@@ -13,5 +14,8 @@ class ESConfigurationForm(formbase.EditFormBase):
     label = _(u"Settings for External storage")
 
 def grab_utility(context):
-    return getUtility(IESConfiguration)
+    try:
+        return getUtility(IESConfiguration)
+    except ComponentLookupError:
+        return None
 
